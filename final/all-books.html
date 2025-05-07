@@ -13,36 +13,32 @@
     <br>
     <h1 class="section-title">All books</h1>
 
-            <section id="categories" class="categories">
-                <div class="media-grid">
+    <section id="categories" class="categories">
+        <div class="media-grid">
 
-                    <a href="book-description.html?id=book1" class="book-link" 
-                        data-id="book1"
-                        data-title="One Punch Man"
-                        data-genre="Action, Comedy, Superhero"
-                        data-author="One"
-                        data-synopsis="One-Punch Man tells the story of Saitama, a very powerful superhero. He has grown bored due to the lack of challenge in his fight against evil."
-                        data-poster="images/books/one-punch-man.jpg">
-                            
-                        <div class="media-card animate">
-                            <img src="images/books/one-punch-man.jpg" alt="One Punch Man" class="media-img">
-                            <div class="glow-overlay"></div>
-                            <div class="media-content">
-                                <span class="media-type">Manga</span>
-                                <h3 class="media-title">One Punch Man</h3>
-                                <p class="media-desc">One-Punch Man tells the story of Saitama, a very powerful superhero. He has grown bored due to the lack of challenge in his fight against evil.</p>
-                            </div>
-                        </div>
-                    </a>
-                    
-                
+            <a href="book-description.html?id=book1" class="book-link" 
+                data-id="book1"
+                data-title="One Punch Man"
+                data-genre="Action, Comedy, Superhero"
+                data-author="One"
+                data-synopsis="One-Punch Man tells the story of Saitama, a very powerful superhero. He has grown bored due to the lack of challenge in his fight against evil."
+                data-poster="images/books/one-punch-man.jpg"
+                data-screenshots='["images/books/screenshots/opm1.jpg", "images/books/screenshots/opm2.jpg", "images/books/screenshots/opm3.jpg", "images/books/screenshots/opm4.jpeg"]'>
+                                                 
+                <div class="media-card animate">
+                    <img src="images/books/one-punch-man.jpg" alt="One Punch Man" class="media-img">
+                    <div class="glow-overlay"></div>
+                    <div class="media-content">
+                        <span class="media-type">Manga</span>
+                        <h3 class="media-title">One Punch Man</h3>
+                        <p class="media-desc">One-Punch Man tells the story of Saitama, a very powerful superhero. He has grown bored due to the lack of challenge in his fight against evil.</p>
+                    </div>
                 </div>
-            </section>
-        
-        
+            </a>
 
-    </body>
-    
+        </div>
+    </section>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             document.querySelectorAll('.book-link').forEach(link => {
@@ -53,15 +49,19 @@
                         genre: this.getAttribute('data-genre'),
                         author: this.getAttribute('data-author'),
                         synopsis: this.getAttribute('data-synopsis'),
-                        poster: this.getAttribute('data-poster')
+                        poster: this.getAttribute('data-poster'),
+                        screenshots: JSON.parse(this.getAttribute('data-screenshots'))
                     };
-        
+                    
+                     console.log('Screenshots:', bookData.screenshots);
+
                     localStorage.setItem('selectedBook', JSON.stringify(bookData));
                     window.location.href = this.getAttribute('href');
                 });
             });
         });
-        </script>
+    </script>
+    
     <div id="footer-container"></div>
     <script src="script.js"></script>
 

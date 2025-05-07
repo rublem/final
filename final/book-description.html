@@ -4,54 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Details</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="descriptionstyle.css">
 </head>
 <body>
     <div id="header-container"></div>
 
+    <div id="description-container">
+        <section id="description">
+            <div class="layout">
+                <div class="poster">
+                    <img id="book-poster" src="" alt="Book Poster" />
+                </div>
+                <div class="info">
+                    <h1 id="book-title"></h1>
+                    <p id="book-genre"></p>
+                    <p id="book-author"></p>
+                    <br />
+                    <p id="book-synopsis"></p>
+                </div>
+            </div>
 
-    <section id="book-details" class="main-content">
-        
-        <div style="display: flex; flex-wrap: wrap; gap: 2rem;">
-          <!-- Poster -->
-          <div style="flex: 1 1 300px; max-width: 300px;">
-            <img id="book-poster" src="" alt="book Poster" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);" />
+
+
+            <div class="scroll-container">
+              <img id="screenshot1" src="" alt="Screenshot 1">
+              <img id="screenshot2" src="" alt="Screenshot 2">
+              <img id="screenshot3" src="" alt="Screenshot 3">
+              <img id="screenshot4" src="" alt="Screenshot 4">
           </div>
-      
-          <!-- book Info -->
-          <div style="flex: 2 1 400px;">
-            <h1 id="book-title"></h1>
-            <p id="book-genre"></p>
-            <p id="book-author"></p>
-            <br>
-            <p id="book-synopsis"></p>
-          </div>
-        </div>
-        
-      </section>
-        <script>
-            
-            window.onload = function () {
-            const params = new URLSearchParams(window.location.search);
-            const bookId = params.get('id');
+        </section>
+    </div>
 
-            const bookData = JSON.parse(localStorage.getItem('selectedBook'));
+    <div id="footer-container"></div>
 
-            if (bookData && bookData.id === bookId) {
-                document.getElementById('book-title').textContent = bookData.title;
-                document.getElementById('book-genre').textContent = `Genre: ${bookData.genre}`;
-                document.getElementById('book-author').textContent = bookData.author
-                document.getElementById('book-synopsis').textContent = bookData.synopsis;
-                document.getElementById('book-poster').src = bookData.poster;
+    <script>
+        window.onload = function () {
+    const params = new URLSearchParams(window.location.search);
+    const bookId = params.get('id');
 
-                console.log(bookData);
+    const bookData = JSON.parse(localStorage.getItem('selectedBook'));
 
-                
-            } else {
-                document.body.innerHTML = '<p>book not found.</p>';
-            }
-            };
-        </script>
+    if (bookData && bookData.id === bookId) {
+        document.getElementById('book-title').textContent = bookData.title;
+        document.getElementById('book-genre').textContent = `Genre: ${bookData.genre}`;
+        document.getElementById('book-author').textContent = `Author: ${bookData.author}`;
+        document.getElementById('book-synopsis').textContent = bookData.synopsis;
+        document.getElementById('book-poster').src = bookData.poster;
+
+        console.log('Stored book data:', bookData);
+
+
+        const screenshotElements = document.querySelectorAll('.scroll-container img');
+        bookData.screenshots.forEach((screenshot, index) => {
+          if (screenshotElements[index]) {
+              screenshotElements[index].src = screenshot;
+              console.log(`Setting screenshot ${index + 1} to: ${screenshot}`);
+          }
+      });
+
+        console.log(screenshotElements);
+    } else {
+        document.body.innerHTML = '<p style="text-align:center; padding: 2rem;">Book not found.</p>';
+    }
+};
+
+
+    </script>
 
     <div id="footer-container"></div>
 
