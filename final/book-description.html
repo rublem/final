@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Details</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="header-container"></div>
+
+
+    <section id="book-details" class="main-content">
+        
+        <div style="display: flex; flex-wrap: wrap; gap: 2rem;">
+          <!-- Poster -->
+          <div style="flex: 1 1 300px; max-width: 300px;">
+            <img id="book-poster" src="" alt="book Poster" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);" />
+          </div>
+      
+          <!-- book Info -->
+          <div style="flex: 2 1 400px;">
+            <h1 id="book-title"></h1>
+            <p id="book-genre"></p>
+            <p id="book-author"></p>
+            <br>
+            <p id="book-synopsis"></p>
+          </div>
+        </div>
+        
+      </section>
+        <script>
+            
+            window.onload = function () {
+            const params = new URLSearchParams(window.location.search);
+            const bookId = params.get('id');
+
+            const bookData = JSON.parse(localStorage.getItem('selectedBook'));
+
+            if (bookData && bookData.id === bookId) {
+                document.getElementById('book-title').textContent = bookData.title;
+                document.getElementById('book-genre').textContent = `Genre: ${bookData.genre}`;
+                document.getElementById('book-author').textContent = bookData.author
+                document.getElementById('book-synopsis').textContent = bookData.synopsis;
+                document.getElementById('book-poster').src = bookData.poster;
+
+                console.log(bookData);
+
+                
+            } else {
+                document.body.innerHTML = '<p>book not found.</p>';
+            }
+            };
+        </script>
+
+    <div id="footer-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

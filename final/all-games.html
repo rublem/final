@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Games - Media Sanctuary</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div id="header-container"></div>
+
+    <br>
+    <h1 class="section-title">All Games</h1>
+
+    <section id="categories" class="categories">
+        <div class="media-grid">
+
+            <a href="game-description.html?id=game1" class="game-link" 
+                data-id="game1"
+                data-title="Minecraft"
+                data-genre="Sandbox, Survival, Adventure"
+                data-developer="Mojang Studios"
+                data-platform="PC, Console, Mobile"
+                data-synopsis="Minecraft is a sandbox game where players can build, explore, and survive in a blocky world full of creativity."
+                data-poster="images/games/minecraft.jpg"
+                data-screenshots='["images/games/screenshots/minecraft1.jpg","images/games/screenshots/minecraft2.webp","images/games/screenshots/minecraft3.jpg","images/games/screenshots/minecraft4.avif"]'>
+
+
+                <div class="media-card animate">
+                    <img src="images/games/minecraft.jpg" alt="Minecraft" class="media-img">
+                    <div class="glow-overlay"></div>
+                    <div class="media-content">
+                        <span class="media-type">Game</span>
+                        <h3 class="media-title">Minecraft</h3>
+                        <p class="media-desc">Minecraft is a sandbox game where players can build, explore, and survive in a blocky world full of creativity.</p>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <div id="footer-container"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.game-link').forEach(link => {
+            link.addEventListener('click', function (event) {
+
+                const gameData = {
+                    id: this.getAttribute('data-id'),
+                    title: this.getAttribute('data-title'),
+                    genre: this.getAttribute('data-genre'),
+                    developer: this.getAttribute('data-developer'),
+                    platform: this.getAttribute('data-platform'),
+                    synopsis: this.getAttribute('data-synopsis'),
+                    poster: this.getAttribute('data-poster'),
+                    screenshots: JSON.parse(this.getAttribute('data-screenshots'))
+                };
+
+                localStorage.setItem('selectedGame', JSON.stringify(gameData));
+                window.location.href = this.getAttribute('href');
+            });
+        });
+    });
+
+    </script>
+    <script src="script.js"></script>
+
+</body>
+</html>

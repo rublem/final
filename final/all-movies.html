@@ -16,7 +16,7 @@
             <section id="categories" class="categories">
                 <div class="media-grid">
                     
-                    <!-- Movie 1 -->
+
                     <a href="movie-description.html?id=movie1" class="movie-link" 
                         data-id="movie1"
                         data-title="The Raid Redemption"
@@ -36,8 +36,7 @@
                             </div>
                         </div>
                     </a>
-                    
-                    <!-- Movie 2 (Bullet Train) -->
+
                     <a href="movie-description.html?id=movie2" class="movie-link" 
                         data-id="movie2"
                         data-title="Bullet Train"
@@ -57,7 +56,7 @@
                             </div>
                         </div>
                     </a>
-                    
+                    <!-- ari next movie same format lang-->
                 </div>
             </section>
         
@@ -65,7 +64,28 @@
 
     </body>
     
-    <script src="to-movie-description.js"></script>
+    <script>
+        document.querySelectorAll('.movie-link').forEach(link => {
+        link.addEventListener('click', function (event) {
+
+
+            const movieData = {
+                id: this.getAttribute('data-id'),
+                title: this.getAttribute('data-title'),
+                genre: this.getAttribute('data-genre'),
+                cast: this.getAttribute('data-cast'),
+                synopsis: this.getAttribute('data-synopsis'),
+                trailer: this.getAttribute('data-trailer'),
+                poster: this.getAttribute('data-poster')
+            };
+
+            localStorage.setItem('selectedMovie', JSON.stringify(movieData));
+
+            window.location.href = this.getAttribute('href');
+        });
+    });
+        
+    </script>
     <div id="footer-container"></div>
     <script src="script.js"></script>
 

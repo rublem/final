@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Game Details</title>
+  <link rel="stylesheet" href="descriptionstyle.css">
+
+</head>
+<body>
+  <div id="header-container"></div>
+
+  <div id="game-details-container">
+    <section id="game-details">
+      <div class="game-layout">
+        <div class="game-poster">
+          <img id="game-poster" src="" alt="Game Poster" />
+        </div>
+        <div class="game-info">
+          <h1 id="game-title"></h1>
+          <p id="game-genre"></p>
+          <p id="game-author"></p>
+          <br />
+          <p id="game-synopsis"></p>
+        </div>
+      </div>
+
+      <div class="scroll-container">
+        <div class="scroll-container">
+            <img id="screenshot1" src="" alt="Screenshot 1">
+            <img id="screenshot2" src="" alt="Screenshot 2">
+            <img id="screenshot3" src="" alt="Screenshot 3">
+            <img id="screenshot4" src="" alt="Screenshot 4">
+        </div>
+        
+      </div>
+    </section>
+  </div>
+
+  <div id="footer-container"></div>
+
+  <script>
+    window.onload = function () {
+      const params = new URLSearchParams(window.location.search);
+      const gameId = params.get('id');
+
+      const gameData = JSON.parse(localStorage.getItem('selectedGame'));
+
+      if (gameData && gameData.id === gameId) {
+        document.getElementById('game-title').textContent = gameData.title;
+        document.getElementById('game-genre').textContent = `Genre: ${gameData.genre}`;
+        document.getElementById('game-author').textContent = `Developer: ${gameData.developer}`;
+        document.getElementById('game-synopsis').textContent = gameData.synopsis;
+        document.getElementById('game-poster').src = gameData.poster;
+
+        console.log('Stored game data:', gameData);
+
+        document.getElementById('screenshot1').src = gameData.screenshots[0];
+        document.getElementById('screenshot2').src = gameData.screenshots[1];
+        document.getElementById('screenshot3').src = gameData.screenshots[2];
+        document.getElementById('screenshot4').src = gameData.screenshots[3];
+    } else {
+        document.body.innerHTML = '<p style="text-align:center; padding: 2rem;">Game not found.</p>';
+      }
+    };
+  </script>
+  <div id="footer-container"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
