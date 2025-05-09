@@ -1,62 +1,65 @@
-* {
+body {
+  font-family: sans-serif;
+  background-color: #181818;
+  color: #e0e0e0;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-body, html {
-  height: 100%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #1e1e1e;
-  color: #f0f0f0;
+  flex-direction: column;
+  align-items: center;
 }
 
 #description-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  width: 80%;
+  margin: 20px auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 #description {
-  flex: 1;
-  padding: 2rem;
-  max-width: 1200px;
-  margin: auto;
-}
-
-h1 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-p {
-  margin: 0.5rem 0;
-  line-height: 1.6;
+  padding: 20px;
 }
 
 .layout {
   display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  margin-bottom: 2rem;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 20px;
 }
 
 .poster {
-  flex: 1 1 300px;
-  max-width: 300px;
+  flex-shrink: 0;
+  width: 200px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .poster img {
+  display: block;
   width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  height: auto;
 }
 
 .info {
-  flex: 2 1 400px;
+  flex-grow: 1;
 }
 
+.info h1 {
+  color: #fff;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.info p {
+  color: #ccc;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
 .scroll-container {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #333;
   background-color: #2c2c2c;
   overflow-x: auto;
   white-space: nowrap;
@@ -79,4 +82,44 @@ p {
   .scroll-container img {
     height: 250px;
   }
+}
+.play-button-wrapper {
+  margin-top: 20px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.play-now-btn {
+  background-color: #e50914;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.play-now-btn:hover {
+  background-color: #c40812;
+}
+
+.trailer-section {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #333;
+}
+
+.trailer-section h3 {
+  color: #fff;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.trailer-section iframe {
+  width: 100%;
+  max-width: 560px;
+  height: 315px;
+  border: none;
+  border-radius: 5px;
 }

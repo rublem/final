@@ -4,61 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Details</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="descriptionstyle.css">
 </head>
 <body>
     <div id="header-container"></div>
 
-
-    <section id="movie-details" class="main-content">
+    <div id="description-container">
+      <section id="description">
         
-        <div style="display: flex; flex-wrap: wrap; gap: 2rem;">
-          <!-- Poster -->
-          <div style="flex: 1 1 300px; max-width: 300px;">
-            <img id="movie-poster" src="" alt="Movie Poster" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);" />
+        <div class="layout">
+          <div class="poster">
+            <img id="movie-poster" src="" alt="Movie Poster" />
           </div>
-      
-          <!-- Movie Info -->
-          <div style="flex: 2 1 400px;">
+
+          <div class="info">
             <h1 id="movie-title"></h1>
             <p id="movie-genre"></p>
             <p id="movie-cast"></p>
-            <br>
+            <br />
             <p id="movie-synopsis"></p>
           </div>
         </div>
-      
-        <!-- Trailer -->
-        <div style="margin-top: 2rem;">
+
+        <a id="movie-watch-movie-link" href="" target="_blank">
+          <div class="play-button-wrapper">
+            <button id="watch-movie-btn" class="play-now-btn">
+              ▶ Play Now
+            </button>
+          </div>
+        </a>
+
+        <div class="trailer-section">
           <h3>Watch Trailer</h3>
           <iframe id="movie-trailer" frameborder="0" allowfullscreen></iframe>
         </div>
-        
       </section>
-        <script>
-            
-            window.onload = function () {
+    </div>
+
+    <script>
+        window.onload = function () {
             const params = new URLSearchParams(window.location.search);
             const movieId = params.get('id');
 
+
             const movieData = JSON.parse(localStorage.getItem('selectedMovie'));
 
-            if (movieData && movieData.id === movieId) {
-                document.getElementById('movie-title').textContent = movieData.title;
-                document.getElementById('movie-genre').textContent = `Genre: ${movieData.genre}`;
-                document.getElementById('movie-cast').textContent = `Cast: ${movieData.cast}`;
-                document.getElementById('movie-synopsis').textContent = movieData.synopsis;
-                document.getElementById('movie-trailer').src = movieData.trailer;
-                document.getElementById('movie-poster').src = movieData.poster;
 
-                console.log(movieData);
-
-                
-            } else {
-                document.body.innerHTML = '<p>Movie not found.</p>';
-            }
-            };
-        </script>
+            document.getElementById('movie-title').textContent = movieData.title;
+            document.getElementById('movie-genre').textContent = `Genre: ${movieData.genre}`;
+            document.getElementById('movie-cast').textContent = `Cast: ${movieData.cast}`;
+            document.getElementById('movie-synopsis').textContent = movieData.synopsis;
+            document.getElementById('movie-trailer').src = movieData.trailer;
+            document.getElementById('movie-poster').src = movieData.poster;
+            document.getElementById('movie-watch-movie-link').href = movieData.watchUrl;
+        };
+    </script>
 
     <div id="footer-container"></div>
 

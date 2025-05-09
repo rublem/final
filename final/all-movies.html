@@ -13,81 +13,75 @@
     <br>
     <h1 class="section-title">All Movies</h1>
 
-            <section id="categories" class="categories">
-                <div class="media-grid">
-                    
+    <section id="categories" class="categories">
+        <div class="media-grid">
+            <a href="movie-description.html?id=movie1" class="movie-link" 
+                data-id="movie1"
+                data-title="The Raid Redemption"
+                data-genre="Action, Thriller"
+                data-cast="Iko Uwais, Joe Taslim, Donny Alamsyah"
+                data-synopsis="A S.W.A.T. team becomes trapped in a tenement run by a ruthless mobster and his army of killers and thugs."
+                data-trailer="https://www.youtube.com/embed/m6Q7KnXpNOg"
+                data-poster="images/movies/the-raid-redemption.jpg"
+                data-watch-url="https://www.cineby.app/movie/94329">
 
-                    <a href="movie-description.html?id=movie1" class="movie-link" 
-                        data-id="movie1"
-                        data-title="The Raid Redemption"
-                        data-genre="Action, Thriller"
-                        data-cast="Iko Uwais, Joe Taslim, Donny Alamsyah"
-                        data-synopsis="A S.W.A.T. team becomes trapped in a tenement run by a ruthless mobster and his army of killers and thugs."
-                        data-trailer="https://www.youtube.com/embed/J5wMKiMlRfA"
-                        data-poster="images/movies/the-raid-redemption.jpg">
-                            
-                        <div class="media-card animate">
-                            <img src="images/movies/the-raid-redemption.jpg" alt="The Raid Redemption" class="media-img">
-                            <div class="glow-overlay"></div>
-                            <div class="media-content">
-                                <span class="media-type">Film</span>
-                                <h3 class="media-title">The Raid Redemption</h3>
-                                <p class="media-desc">A S.W.A.T. team becomes trapped in a tenement run by a ruthless mobster and his army of killers and thugs.</p>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="movie-description.html?id=movie2" class="movie-link" 
-                        data-id="movie2"
-                        data-title="Bullet Train"
-                        data-genre="Action, Comedy"
-                        data-cast="Brad Pitt, Aaron Taylor Johnson"
-                        data-synopsis="Five assassins board a Japanese bullet train bound for Kyoto and come to discover that their seemingly separate missions are mysteriously linked."
-                        data-trailer="https://www.youtube.com/watch?v=0IOsk2Vlc4o"
-                        data-poster="images/movies/bullet-train.webp">
-                            
-                        <div class="media-card animate">
-                            <img src="images/movies/bullet-train.webp" alt="Bullet Train" class="media-img">
-                            <div class="glow-overlay"></div>
-                            <div class="media-content">
-                                <span class="media-type">Film</span>
-                                <h3 class="media-title">Bullet Train</h3>
-                                <p class="media-desc">Five assassins board a Japanese bullet train bound for Kyoto and come to discover that their seemingly separate missions are mysteriously linked.</p>
-                            </div>
-                        </div>
-                    </a>
-                    <!-- ari next movie same format lang-->
+                <div class="media-card animate">
+                    <img src="images/movies/the-raid-redemption.jpg" alt="The Raid Redemption" class="media-img">
+                    <div class="glow-overlay"></div>
+                    <div class="media-content">
+                        <span class="media-type">Film</span>
+                        <h3 class="media-title">The Raid Redemption</h3>
+                        <p class="media-desc">A S.W.A.T. team becomes trapped in a tenement run by a ruthless mobster and his army of killers and thugs.</p>
+                    </div>
                 </div>
-            </section>
-        
-        
+            </a>
 
-    </body>
-    
+            <a href="movie-description.html?id=movie2" class="movie-link" 
+                data-id="movie2"
+                data-title="Bullet Train"
+                data-genre="Action, Comedy"
+                data-cast="Brad Pitt, Aaron Taylor Johnson"
+                data-synopsis="Five assassins board a Japanese bullet train bound for Kyoto and come to discover that their seemingly separate missions are mysteriously linked."
+                data-trailer="https://www.youtube.com/embed/0IOsk2Vlc4o"
+                data-poster="images/movies/bullet-train.webp"
+                data-watch-url="https://www.cineby.app/movie/718930">
+                
+                <div class="media-card animate">
+                    <img src="images/movies/bullet-train.webp" alt="Bullet Train" class="media-img">
+                    <div class="glow-overlay"></div>
+                    <div class="media-content">
+                        <span class="media-type">Film</span>
+                        <h3 class="media-title">Bullet Train</h3>
+                        <p class="media-desc">Five assassins board a Japanese bullet train bound for Kyoto and come to discover that their seemingly separate missions are mysteriously linked.</p>
+                    </div>
+                </div>
+            </a>
+            <!-- add ari same strcuture lang unya iembed ang url-->
+        </div>
+    </section>
+
     <script>
         document.querySelectorAll('.movie-link').forEach(link => {
-        link.addEventListener('click', function (event) {
-
-
-            const movieData = {
-                id: this.getAttribute('data-id'),
-                title: this.getAttribute('data-title'),
-                genre: this.getAttribute('data-genre'),
-                cast: this.getAttribute('data-cast'),
-                synopsis: this.getAttribute('data-synopsis'),
-                trailer: this.getAttribute('data-trailer'),
-                poster: this.getAttribute('data-poster')
-            };
-
-            localStorage.setItem('selectedMovie', JSON.stringify(movieData));
-
-            window.location.href = this.getAttribute('href');
+            link.addEventListener('click', function (event) {
+                const movieData = {
+                    id: this.getAttribute('data-id'),
+                    title: this.getAttribute('data-title'),
+                    genre: this.getAttribute('data-genre'),
+                    cast: this.getAttribute('data-cast'),
+                    synopsis: this.getAttribute('data-synopsis'),
+                    trailer: this.getAttribute('data-trailer'),
+                    poster: this.getAttribute('data-poster'),
+                    watchUrl: this.getAttribute('data-watch-url')
+                };
+                
+                localStorage.setItem('selectedMovie', JSON.stringify(movieData));
+                window.location.href = this.getAttribute('href');
+            });
         });
-    });
-        
     </script>
-    <div id="footer-container"></div>
-    <script src="script.js"></script>
 
+    <div id="footer-container"></div>
+
+    <script src="script.js"></script>
 </body>
 </html>

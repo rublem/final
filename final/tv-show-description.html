@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Show Description - Media Sanctuary</title>
+    <link rel="stylesheet" href="descriptionstyle.css">
+</head>
+<body>
+
+    <div id="header-container"></div>
+
+    <section id="tv-show-details" class="tv-show-details">
+        <div id="description-container">
+    
+            <section id="description">
+
+                <div class="layout">
+                    <div class="poster">
+                        <img id="tv-show-poster" src="" alt="TV Show Poster" />
+                    </div>
+    
+                    <div class="info">
+                        <h1 id="tv-show-title"></h1>
+                        <p id="tv-show-genre"></p>
+                        <p id="tv-show-cast"></p>
+                        <br />
+                        <p id="tv-show-synopsis"></p>
+                    </div>
+                </div>
+    
+
+                <a id="watch-now-link" href="" target="_blank">
+                    <div class="play-button-wrapper">
+                        <button id="watch-now-btn" class="play-now-btn">
+                            ▶ Watch Now
+                        </button>
+                    </div>
+                </a>
+
+                <div class="trailer-section">
+                    <h3>Watch Trailer</h3>
+                    <iframe id="tv-show-trailer" frameborder="0" allowfullscreen></iframe>
+                </div>
+    
+            </section>
+    
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tvShowData = JSON.parse(localStorage.getItem('selectedTVShow'));
+
+                document.getElementById('tv-show-poster').src = tvShowData.poster;
+                document.getElementById('tv-show-title').textContent = tvShowData.title;
+                document.getElementById('tv-show-genre').textContent = tvShowData.genre;
+                document.getElementById('tv-show-cast').textContent = tvShowData.cast;
+                document.getElementById('tv-show-synopsis').textContent = tvShowData.synopsis;
+                document.getElementById('tv-show-trailer').src = tvShowData.trailer;
+                document.getElementById('watch-now-link').href = tvShowData.watchUrl;
+
+
+
+        });
+    </script>
+
+    <div id="footer-container"></div>
+    <script src="script.js"></script>
+</body>
+</html>

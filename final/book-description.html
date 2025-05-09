@@ -24,7 +24,13 @@
                 </div>
             </div>
 
-
+            <a id="book-read-link" href="" target="_blank">
+                <div class="play-button-wrapper">
+                    <button id="watch-movie-btn" class="play-now-btn">
+                        ▶ Read Now
+                    </button>
+                </div>
+            </a>
 
             <div class="scroll-container">
               <img id="screenshot1" src="" alt="Screenshot 1">
@@ -44,28 +50,30 @@
 
     const bookData = JSON.parse(localStorage.getItem('selectedBook'));
 
-    if (bookData && bookData.id === bookId) {
+
         document.getElementById('book-title').textContent = bookData.title;
         document.getElementById('book-genre').textContent = `Genre: ${bookData.genre}`;
         document.getElementById('book-author').textContent = `Author: ${bookData.author}`;
         document.getElementById('book-synopsis').textContent = bookData.synopsis;
         document.getElementById('book-poster').src = bookData.poster;
+        document.getElementById('book-read-link').href = bookData.readUrl;
+        
+        console.log('Read URL:', bookData.readUrl);
 
         console.log('Stored book data:', bookData);
 
-
+        
         const screenshotElements = document.querySelectorAll('.scroll-container img');
         bookData.screenshots.forEach((screenshot, index) => {
           if (screenshotElements[index]) {
               screenshotElements[index].src = screenshot;
               console.log(`Setting screenshot ${index + 1} to: ${screenshot}`);
           }
-      });
 
+        
+      });
+      
         console.log(screenshotElements);
-    } else {
-        document.body.innerHTML = '<p style="text-align:center; padding: 2rem;">Book not found.</p>';
-    }
 };
 
 

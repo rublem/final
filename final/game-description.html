@@ -23,7 +23,14 @@
           <p id="game-synopsis"></p>
         </div>
       </div>
-
+      <a id="game-game-url" href="" target="_blank">
+        <div class="play-button-wrapper">
+            <button id="watch-movie-btn" class="play-now-btn">
+                ▶ Download Game Now
+            </button>
+        </div>
+    </a>
+    
       <div class="scroll-container">
         <img id="screenshot1" src="" alt="Screenshot 1">
         <img id="screenshot2" src="" alt="Screenshot 2">
@@ -42,12 +49,12 @@
 
       const gameData = JSON.parse(localStorage.getItem('selectedGame'));
 
-      if (gameData && gameData.id === gameId) {
         document.getElementById('game-title').textContent = gameData.title;
         document.getElementById('game-genre').textContent = `Genre: ${gameData.genre}`;
         document.getElementById('game-author').textContent = `Developer: ${gameData.developer}`;
         document.getElementById('game-synopsis').textContent = gameData.synopsis;
         document.getElementById('game-poster').src = gameData.poster;
+        document.getElementById('game-game-url').href = gameData.gameUrl;
 
         console.log('Stored game data:', gameData);
 
@@ -55,9 +62,10 @@
         document.getElementById('screenshot2').src = gameData.screenshots[1];
         document.getElementById('screenshot3').src = gameData.screenshots[2];
         document.getElementById('screenshot4').src = gameData.screenshots[3];
-      } else {
-        document.body.innerHTML = '<p style="text-align:center; padding: 2rem;">Game not found.</p>';
-      }
+
+
+        console.log('game url:', gameData.gameUrl);
+
     };
   </script>
 

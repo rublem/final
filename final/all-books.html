@@ -23,8 +23,9 @@
                 data-author="One"
                 data-synopsis="One-Punch Man tells the story of Saitama, a very powerful superhero. He has grown bored due to the lack of challenge in his fight against evil."
                 data-poster="images/books/one-punch-man.jpg"
-                data-screenshots='["images/books/screenshots/opm1.jpg", "images/books/screenshots/opm2.jpg", "images/books/screenshots/opm3.jpg", "images/books/screenshots/opm4.jpeg"]'>
-                                                 
+                data-screenshots='["images/books/screenshots/opm1.jpg", "images/books/screenshots/opm2.jpg", "images/books/screenshots/opm3.jpg", "images/books/screenshots/opm4.jpeg"]'
+                data-read-url="https://readonepunch-man.com/">
+
                 <div class="media-card animate">
                     <img src="images/books/one-punch-man.jpg" alt="One Punch Man" class="media-img">
                     <div class="glow-overlay"></div>
@@ -43,6 +44,8 @@
         document.addEventListener('DOMContentLoaded', function () {
             document.querySelectorAll('.book-link').forEach(link => {
                 link.addEventListener('click', function (event) {
+                    event.preventDefault(); // Prevent the default anchor behavior
+
                     const bookData = {
                         id: this.getAttribute('data-id'),
                         title: this.getAttribute('data-title'),
@@ -50,16 +53,19 @@
                         author: this.getAttribute('data-author'),
                         synopsis: this.getAttribute('data-synopsis'),
                         poster: this.getAttribute('data-poster'),
-                        screenshots: JSON.parse(this.getAttribute('data-screenshots'))
+                        screenshots: JSON.parse(this.getAttribute('data-screenshots')),
+                        readUrl: this.getAttribute('data-read-url')
                     };
-                    
-                     console.log('Screenshots:', bookData.screenshots);
+
+                    console.log('Screenshots:', bookData.screenshots);
+                    console.log('Screenshots:', bookData.readUrl);
 
                     localStorage.setItem('selectedBook', JSON.stringify(bookData));
                     window.location.href = this.getAttribute('href');
                 });
             });
         });
+
     </script>
     
     <div id="footer-container"></div>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Album Description</title>
+  <link rel="stylesheet" href="descriptionstyle.css">
+  <style>
+    #album-tracks {
+      padding: 0;
+      list-style-type: none;
+      margin-top: 10px;
+    }
+
+    #album-tracks li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      padding: 5px;
+      border-bottom: 1px solid #333;
+    }
+
+    #album-tracks li span {
+      font-size: 1rem;
+    }
+
+    #album-tracks li span.track-number {
+      font-weight: bold;
+      margin-right: 15px;
+    }
+
+    #album-tracks li span.track-name {
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="header-container"></div>
+
+  <div id="description-container">
+    <section id="description">
+      <div class="layout">
+        <div class="cover poster">
+          <img id="album-cover" src="" alt="Album Cover" />
+        </div>
+        <div class="info">
+          <h1 id="album-title"></h1>
+          <p id="album-artist"></p>
+          <p id="album-genre"></p>
+          <p id="album-year"></p>
+          <br />
+          <p id="album-description"></p>
+        </div>
+      </div>
+  
+      <h2>Tracklist</h2>
+      <ul id="album-tracks"></ul>
+  
+      <h2>Listen on Spotify</h2>
+      <div class="play-button-wrapper">
+        <button id="play-album-btn" class="play-now-btn"> ▶ Play Album on Spotify</button>
+      </div>
+    </section>
+  </div>
+  
+
+  <script>
+    window.onload = function () {
+      const albumData = JSON.parse(localStorage.getItem('selectedAlbum'));
+      if (!albumData) return;
+
+      document.getElementById('album-title').textContent = albumData.title;
+      document.getElementById('album-artist').textContent = `Artist: ${albumData.artist}`;
+      document.getElementById('album-genre').textContent = `Genre: ${albumData.genre}`;
+      document.getElementById('album-year').textContent = `Released: ${albumData.year}`;
+      document.getElementById('album-description').textContent = albumData.description;
+      document.getElementById('album-cover').src = albumData.cover;
+
+      const trackList = document.getElementById('album-tracks');
+      albumData.tracks.forEach(track => {
+        const li = document.createElement('li');
+        li.textContent = track;
+        trackList.appendChild(li);
+      });
+
+      const playAlbumBtn = document.getElementById('play-album-btn');
+      playAlbumBtn.addEventListener('click', function () {
+        window.open(albumData.spotifyEmbedURL, '_blank');
+      });
+    };
+  </script>
+
+  <div id="footer-container"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

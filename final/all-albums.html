@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>All Albums - Media Sanctuary</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div id="header-container"></div>
+
+  <br>
+  <h1 class="section-title">All Albums</h1>
+
+  <section id="albums" class="categories">
+    <div class="media-grid">
+
+      <!-- ALBUM CARD EXAMPLE -->
+      <a href="album-description.html?id=album2" class="album-link"
+        data-id="album2"
+        data-title="Rust in Peace"
+        data-artist="Megadeth"
+        data-genre="Thrash Metal"
+        data-year="1990"
+        data-description="An iconic thrash metal album known for its technical guitar work and politically charged lyrics."
+        data-cover="images/albums/rust-in-peace.jpg"
+        data-tracks='["Holy Wars... The Punishment Due", "Hangar 18", "Take No Prisoners", "Five Magics", "Tornado of Souls", "Rust in Peace... Polaris", "Dawn Patrol", "Poison Was the Cure", "Lucretia"]'
+        data-spotify-embed-url="https://open.spotify.com/album/4e6ML9RBhDyyKTaTwbiRZv?si=0ILVdTXASSCUeT52XtEITw">
+
+        <div class="media-card animate">
+            <img src="images/albums/rust-in-peace.jpg" alt="Rust in Peace" class="media-img" />
+            <div class="glow-overlay"></div>
+            <div class="media-content">
+            <span class="media-type">Album</span>
+            <h3 class="media-title">Rust in Peace</h3>
+            <p class="media-desc">An iconic thrash metal album with technical guitar work and intense themes.</p>
+            </div>
+        </div>
+        </a>
+
+
+      <!-- paste more!!!!!!!!!1 -->
+
+    </div>
+  </section>
+
+  <div id="footer-container"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.album-link').forEach(link => {
+        link.addEventListener('click', function (event) {
+          event.preventDefault();
+
+          const albumData = {
+            id: this.getAttribute('data-id'),
+            title: this.getAttribute('data-title'),
+            artist: this.getAttribute('data-artist'),
+            genre: this.getAttribute('data-genre'),
+            year: this.getAttribute('data-year'),
+            description: this.getAttribute('data-description'),
+            cover: this.getAttribute('data-cover'),
+            tracks: JSON.parse(this.getAttribute('data-tracks')),
+            spotifyEmbedURL: this.getAttribute('data-spotify-embed-url')
+          };
+
+          localStorage.setItem('selectedAlbum', JSON.stringify(albumData));
+          window.location.href = this.getAttribute('href');
+        });
+      });
+    });
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
