@@ -215,15 +215,6 @@ a:hover, a:focus {
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     }
 }
-
-:root {
-    --dark-bg: #111111;
-    --text-color: #ffffff;
-    --accent-pink: #ff69b4;
-    --accent-purple: #9370db;
-    --accent-blue: #4b0082;
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -299,4 +290,3 @@ iframe#movie-trailer {
         height: 250px;
     }
 }
-

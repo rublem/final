@@ -16,19 +16,25 @@ fetch('header.html')
     document.getElementById('movies-container').innerHTML = data;
   });
 
-  fetch('books.html')
+  fetch('top3tv-shows.html')
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById('tv-shows-container').innerHTML = data;
+  });
+
+  fetch('top3books.html')
   .then(res => res.text())
   .then(data => {
     document.getElementById('books-container').innerHTML = data;
   });
 
-  fetch('games.html')
+  fetch('top3games.html')
   .then(res => res.text())
   .then(data => {
     document.getElementById('games-container').innerHTML = data;
   });
 
-  fetch('albums.html')
+  fetch('top3albums.html')
   .then(res => res.text())
   .then(data => {
     document.getElementById('albums-container').innerHTML = data;
