@@ -7,111 +7,109 @@
     <style>
 
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
         }
-        
 
         :root {
-            --dark-bg: #111111;
-            --text-color: #ffffff;
-            --accent-pink: #ff69b4;
-            --accent-purple: #9370db;
+        --dark-bg: #0a0a0a;
+        --text-color: #f0f0f0;
+        --accent-primary: #e91e63;
+        --accent-secondary: #673ab7;
         }
-        
 
         .site-header {
-            background-color: var(--dark-bg);
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            width: 100%;
-            z-index: 100;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--dark-bg);
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid rgba(240, 240, 240, 0.1);
+        width: 100%;
+        z-index: 100;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         .logo {
-            font-size: 24px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            background: linear-gradient(to right, var(--accent-pink), var(--accent-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            color: transparent;
+        font-size: 24px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
         }
-        
+
         nav ul {
-            display: flex;
-            list-style: none;
+        display: flex;
+        list-style: none;
         }
-        
+
         nav ul li {
-            margin-left: 20px;
+        margin-left: 20px;
         }
-        
+
         nav ul li a {
-            color: var(--text-color);
-            text-decoration: none;
-            transition: color 0.3s;
-            font-size: 16px;
+        color: var(--text-color);
+        text-decoration: none;
+        transition: color 0.3s;
+        font-size: 16px;
         }
-        
+
         nav ul li a:hover {
-            color: var(--accent-pink);
+        color: var(--accent-primary);
         }
-        
+
         .mobile-menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
+        display: none;
+        background: none;
+        border: none;
+        color: var(--text-color);
+        font-size: 24px;
+        cursor: pointer;
         }
-        
 
         @media (max-width: 768px) {
-            .mobile-menu-toggle {
-                display: block;
-            }
-            
-            .desktop-menu {
-                display: none;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background-color: var(--dark-bg);
-                padding: 20px;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            }
-            
-            .desktop-menu.active {
-                display: block;
-            }
-            
-            nav ul {
-                flex-direction: column;
-            }
-            
-            nav ul li {
-                margin: 10px 0;
-            }
-            
+        .mobile-menu-toggle {
+            display: block;
         }
+
+        .desktop-menu {
+            display: none;
+            position: absolute;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background-color: var(--dark-bg);
+            padding: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .desktop-menu.active {
+            display: block;
+        }
+
+        nav ul {
+            flex-direction: column;
+        }
+
+        nav ul li {
+            margin: 10px 0;
+        }
+        }
+
         #header-container {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
-        background-color: #fff;
+        background-color: var(--dark-bg);
         z-index: 1000;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
+
         body {
         padding-top: 60px;
         }

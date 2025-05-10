@@ -1,9 +1,11 @@
 :root {
-    --dark-bg: #111111;
+    --dark-bg: #0e0e0e;
     --text-color: #ffffff;
-    --accent-pink: #ff69b4;
-    --accent-purple: #9370db;
-    --accent-blue: #4b0082;
+    --accent-red: #e4002b;
+    --accent-hover: #ff1741;
+    --card-bg: #222222;
+    --text-secondary: #b3b3b3;
+    --border-color: #333333;
 }
 
 * {
@@ -17,25 +19,6 @@ body {
     background-color: var(--dark-bg);
     color: var(--text-color);
     overflow-x: hidden;
-}
-
-nav ul {
-    display: flex;
-    list-style: none;
-}
-
-nav ul li {
-    margin-left: 20px;
-}
-
-nav ul li a {
-    color: var(--text-color);
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-nav ul li a:hover {
-    color: var(--accent-pink);
 }
 
 .hero {
@@ -56,7 +39,7 @@ nav ul li a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at center, rgba(147, 112, 219, 0.3), transparent);
+    background: radial-gradient(circle at center, rgba(228, 0, 43, 0.3), transparent);
     z-index: -1;
 }
 
@@ -65,7 +48,7 @@ nav ul li a:hover {
     font-weight: 900;
     text-align: center;
     margin-bottom: 20px;
-    text-shadow: 0 0 10px rgba(255, 105, 180, 0.7);
+    text-shadow: 0 0 10px rgba(228, 0, 43, 0.7);
 }
 
 .hero p {
@@ -78,7 +61,7 @@ nav ul li a:hover {
 
 .btn {
     padding: 12px 24px;
-    background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+    background: var(--accent-red);
     color: white;
     border: none;
     border-radius: 5px;
@@ -90,7 +73,7 @@ nav ul li a:hover {
 
 .btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(255, 105, 180, 0.3);
+    box-shadow: 0 10px 20px rgba(228, 0, 43, 0.3);
 }
 
 .categories {
@@ -102,7 +85,7 @@ nav ul li a:hover {
     font-size: 2.5rem;
     margin-bottom: 60px;
     color: white;
-    text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+    text-shadow: 0 0 10px rgba(228, 0, 43, 0.5);
 }
 
 .media-grid {
@@ -114,7 +97,7 @@ nav ul li a:hover {
 }
 
 .media-card {
-    background: rgba(30, 30, 30, 0.7);
+    background: var(--card-bg);
     border-radius: 10px;
     overflow: hidden;
     transition: transform 0.3s, box-shadow 0.3s;
@@ -123,7 +106,7 @@ nav ul li a:hover {
 
 .media-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(255, 105, 180, 0.2);
+    box-shadow: 0 15px 30px rgba(228, 0, 43, 0.2);
 }
 
 .media-img {
@@ -143,7 +126,7 @@ nav ul li a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(255, 105, 180, 0.3), rgba(147, 112, 219, 0.3));
+    background: linear-gradient(135deg, rgba(228, 0, 43, 0.3), rgba(228, 0, 43, 0.1));
     opacity: 0;
     transition: opacity 0.3s;
 }
@@ -164,47 +147,27 @@ nav ul li a:hover {
 .media-type {
     display: inline-block;
     padding: 5px 10px;
-    background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+    background: var(--accent-red);
     font-size: 0.8rem;
     border-radius: 15px;
     margin-bottom: 12px;
 }
 
 .media-desc {
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--text-secondary);
     font-size: 0.9rem;
     line-height: 1.5;
 }
+
 a {
-    text-decoration: none; /* Removes the underline */
-    color: inherit; /* Inherit color from the parent element */
+    text-decoration: none;
+    color: inherit;
 }
 
-/* Ensure that the card remains the same color even when the link is clicked or hovered */
 a:hover, a:focus {
     color: inherit;
     text-decoration: none;
 }
-/*
-.view-all-btn {
-    margin: 30px 0;
-    padding: 6px 12px;
-    background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-    right: 20px;
-  }
-  
-  .view-all-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(255, 105, 180, 0.3);
-  }
-*/
 
 @media (max-width: 768px) {
     .hero h1 {
@@ -215,6 +178,7 @@ a:hover, a:focus {
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     }
 }
+
 * {
     margin: 0;
     padding: 0;
@@ -235,7 +199,7 @@ body {
 }
 
 .back-link {
-    color: var(--accent-pink);
+    color: var(--accent-red);
     font-size: 1.1rem;
     text-decoration: none;
     margin-bottom: 30px;
@@ -247,7 +211,7 @@ body {
 }
 
 #movie-details {
-    background-color: rgba(30, 30, 30, 0.8);
+    background-color: var(--card-bg);
     padding: 30px;
     border-radius: 10px;
     max-width: 800px;
@@ -268,7 +232,7 @@ body {
 h3 {
     font-size: 1.3rem;
     margin-bottom: 15px;
-    color: var(--accent-pink);
+    color: var(--accent-red);
 }
 
 iframe#movie-trailer {
