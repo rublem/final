@@ -11,7 +11,6 @@
 
     <div id="description-container">
       <section id="description">
-        
         <div class="layout">
           <div class="poster">
             <img id="movie-poster" src="" alt="Movie Poster" />
@@ -41,21 +40,21 @@
       </section>
     </div>
 
-    <script>
-        window.onload = function () {
-            const params = new URLSearchParams(window.location.search);
-            const movieId = params.get('id');
-
+     <script>
+        window.onload = function() {
             const movieData = JSON.parse(localStorage.getItem('selectedMovie'));
 
-
-            document.getElementById('movie-title').textContent = movieData.title;
-            document.getElementById('movie-genre').textContent = `Genre: ${movieData.genre}`;
-            document.getElementById('movie-cast').textContent = `Cast: ${movieData.cast}`;
-            document.getElementById('movie-synopsis').textContent = movieData.synopsis;
-            document.getElementById('movie-trailer').src = movieData.trailer;
-            document.getElementById('movie-poster').src = movieData.poster;
-            document.getElementById('movie-watch-movie-link').href = movieData.watchUrl;
+            if (movieData) {
+                document.getElementById('movie-title').textContent = movieData.title;
+                document.getElementById('movie-genre').textContent = `Genre: ${movieData.genre}`;
+                document.getElementById('movie-cast').textContent = `Cast: ${movieData.cast}`;
+                document.getElementById('movie-synopsis').textContent = movieData.synopsis;
+                document.getElementById('movie-trailer').src = movieData.trailer;
+                document.getElementById('movie-poster').src = movieData.poster;
+                document.getElementById('movie-watch-movie-link').href = movieData.watchUrl;
+            } else {
+                document.getElementById('movie-details').innerHTML = "<p>No movie selected.</p>";
+            }
         };
     </script>
 

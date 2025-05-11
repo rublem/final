@@ -43,33 +43,7 @@
         </div>
     </section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            document.querySelectorAll('.book-link').forEach(link => {
-                link.addEventListener('click', function (event) {
-                    event.preventDefault();
-
-                    const bookData = {
-                        id: this.getAttribute('data-id'),
-                        title: this.getAttribute('data-title'),
-                        genre: this.getAttribute('data-genre'),
-                        author: this.getAttribute('data-author'),
-                        synopsis: this.getAttribute('data-synopsis'),
-                        poster: this.getAttribute('data-poster'),
-                        screenshots: JSON.parse(this.getAttribute('data-screenshots')),
-                        readUrl: this.getAttribute('data-read-url')
-                    };
-
-                    console.log('Screenshots:', bookData.screenshots);
-                    console.log('Screenshots:', bookData.readUrl);
-
-                    localStorage.setItem('selectedBook', JSON.stringify(bookData));
-                    window.location.href = this.getAttribute('href');
-                });
-            });
-        });
-
-    </script>
+    <script src="fetcher.js"></script>
     
     <div id="footer-container"></div>
     <script src="headandfoot.js"></script>
