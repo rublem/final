@@ -47,7 +47,7 @@
         document.addEventListener('DOMContentLoaded', function () {
             document.querySelectorAll('.book-link').forEach(link => {
                 link.addEventListener('click', function (event) {
-                    event.preventDefault(); // Prevent the default anchor behavior
+                    event.preventDefault();
 
                     const bookData = {
                         id: this.getAttribute('data-id'),
@@ -72,7 +72,7 @@
     </script>
     
     <div id="footer-container"></div>
-    <script src="script.js"></script>
+    <script src="headandfoot.js"></script>
 
 </body>
 </html>
