@@ -54,16 +54,14 @@
           <p id="album-description"></p>
         </div>
       </div>
-  
-      <h2>Tracklist</h2>
-      <ul id="album-tracks"></ul>
-      
+
       <div class="spotify-section">
-      <h2>Listen on Spotify</h2>
-      <div class="play-button-wrapper">
-        <button id="play-album-btn" class="play-now-btn"> ▶ Play Album on Spotify</button>
+        <h2>Listen Preview</h2>
+        <div id="spotify-embed-wrapper" style="margin-top: 10px;"></div>
       </div>
-      </div>
+
+      
+
     </section>
   </div>
   
@@ -80,17 +78,19 @@
       document.getElementById('album-description').textContent = albumData.description;
       document.getElementById('album-cover').src = albumData.cover;
 
-      const trackList = document.getElementById('album-tracks');
-      albumData.tracks.forEach(track => {
-        const li = document.createElement('li');
-        li.textContent = track;
-        trackList.appendChild(li);
-      });
+      const embedWrapper = document.getElementById('spotify-embed-wrapper');
+      const embedSrc = albumData.spotifyEmbedURL.replace('/album/', '/embed/album/').split('?')[0] + '?utm_source=generator&theme=0';
 
-      const playAlbumBtn = document.getElementById('play-album-btn');
-      playAlbumBtn.addEventListener('click', function () {
-        window.open(albumData.spotifyEmbedURL, '_blank');
-      });
+      const iframe = document.createElement('iframe');
+      iframe.style.borderRadius = '12px';
+      iframe.src = embedSrc;
+      iframe.width = '100%';
+      iframe.height = '352';
+      iframe.frameBorder = '0';
+      iframe.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
+      iframe.loading = 'lazy';
+
+      embedWrapper.appendChild(iframe);
     };
   </script>
 
